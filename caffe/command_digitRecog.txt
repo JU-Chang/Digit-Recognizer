@@ -1,0 +1,24 @@
+make all ¨Cj8
+./build/examples/digitRecog/convert_digitRecog_train_lmdb.bin examples/digitRecog/data/train.csv examples/digitRecog/digitRecog_train_lmdb --backend=lmdb
+
+make all ¨Cj8
+./build/examples/digitRecog/convert_digitRecog_lmdb.bin examples/digitRecog/data/test.csv examples/digitRecog/digitRecog_test_lmdb --backend=lmdb
+
+./examples/digitRecog/create_digitRecog.sh
+
+./examples/digitRecog/digitRecog_train.sh
+
+./examples/digitRecog/digitRecog_extract_features.sh 
+
+
+./build/examples/digitRecog/convert_digitRecog_train_lmdb.bin data/digitRecog/train.csv \
+examples/digitRecog/digitRecog_train_lmdb --backend=lmdb
+
+./build/examples/digitRecog/convert_digitRecog_lmdb.bin data/digitRecog/test.csv \
+examples/digitRecog/digitRecog_test_lmdb --backend=lmdb
+
+
+============½âÎöÈÕÖ¾
+./examples/digitRecog/digitRecog_train.sh 2>&1 |tee digitRecog_train.log
+
+./tools/extra/parse_log.sh digitRecog_train.log
